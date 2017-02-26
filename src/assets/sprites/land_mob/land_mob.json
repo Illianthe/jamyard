@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "got hit/frame-1.png",
+	"frame": {"x":1,"y":1,"w":48,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":39},
+	"sourceSize": {"w":48,"h":39}
+},
+{
+	"filename": "got hit/frame-2.png",
+	"frame": {"x":1,"y":42,"w":48,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":39},
+	"sourceSize": {"w":48,"h":39}
+},
+{
+	"filename": "idle/frame-1.png",
+	"frame": {"x":1,"y":83,"w":48,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":36},
+	"sourceSize": {"w":48,"h":36}
+},
+{
+	"filename": "idle/frame-2.png",
+	"frame": {"x":1,"y":121,"w":48,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":36},
+	"sourceSize": {"w":48,"h":36}
+},
+{
+	"filename": "idle/frame-3.png",
+	"frame": {"x":1,"y":159,"w":48,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":36},
+	"sourceSize": {"w":48,"h":36}
+},
+{
+	"filename": "idle/frame-4.png",
+	"frame": {"x":1,"y":197,"w":48,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":36},
+	"sourceSize": {"w":48,"h":36}
+},
+{
+	"filename": "idle/frame-5.png",
+	"frame": {"x":1,"y":235,"w":48,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":36},
+	"sourceSize": {"w":48,"h":36}
+},
+{
+	"filename": "idle/frame-6.png",
+	"frame": {"x":1,"y":273,"w":48,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":36},
+	"sourceSize": {"w":48,"h":36}
+},
+{
+	"filename": "idle/frame-7.png",
+	"frame": {"x":1,"y":311,"w":48,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":36},
+	"sourceSize": {"w":48,"h":36}
+},
+{
+	"filename": "idle/frame-8.png",
+	"frame": {"x":1,"y":349,"w":48,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":36},
+	"sourceSize": {"w":48,"h":36}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "land_mob.png",
+	"format": "RGBA8888",
+	"size": {"w":50,"h":386},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6df4a5ee8ac1aedd969ddc52989e9386:471831706e456b9397f5a298b4b8a5fb:4ff778172264431d990ba29bb3923633$"
+}
+}
