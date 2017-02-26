@@ -1,5 +1,6 @@
 import Phaser from 'phaser-ce';
 import globals from '../globals';
+import Fireball from './fireball';
 
 export default class extends Phaser.Sprite {
   constructor({ game, x, y }) {
@@ -8,6 +9,17 @@ export default class extends Phaser.Sprite {
     this.animations.play('idle');
     this.anchor.setTo(0.5);
     game.physics.enable(this, Phaser.Physics.ARCADE);
+    globals.wordCompletedSignal.add(this.fire, this);
     game.add.existing(this);
+  }
+
+  update() {
+    if (!this.alive) {
+      globals.wordCompletedSignal.remove(this.fire, this);
+    }
+  }
+
+  fire(target) {
+    globals.wizard_attacks.add(new Fireball({ game: this.game, target: target, x: this.x, y: this.y }));
   }
 }

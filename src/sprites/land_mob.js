@@ -11,7 +11,7 @@ export default class extends Phaser.Sprite {
     this.word = globals.typoWordlist[game.rnd.integerInRange(0, globals.typoWordlist.length)];
     this.cur_char = 0;
     var text = this.text = game.add.text(0, -32, this.word, {
-      font: '20px Helvetica',
+      font: '20px Monospace',
       fill: '#FFF',
       backgroundColor: '#000'
     });
@@ -32,7 +32,7 @@ export default class extends Phaser.Sprite {
     }
 
     if (this.x < 0) {
-      this.destroy();
+      this.kill();
     }
   }
 
@@ -45,7 +45,7 @@ export default class extends Phaser.Sprite {
     }
 
     if (!this.word[this.cur_char]) {
-      this.destroy();
+      globals.wordCompletedSignal.dispatch(this);
       globals.keypressSignal.remove(this.handleKeypress, this);
     }
   }

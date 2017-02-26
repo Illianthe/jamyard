@@ -12,6 +12,9 @@ var g = globals.game = new Phaser.Game(globals.gameWidth, globals.gameHeight, Ph
   update: update
 });
 
+var scoreText;
+var livesText;
+
 function handleKeypress(char) {
   globals.keypressSignal.dispatch(char);
 }
@@ -20,6 +23,7 @@ function preload() {
   g.load.text('base-wordlist', 'assets/data/base_wordlist.txt');
   g.load.text('typo-wordlist', 'assets/data/typo_wordlist.txt');
   g.load.image('background', 'assets/background.png');
+  g.load.image('fireball', 'assets/fireball.png');
   g.load.atlasJSONHash('land-mob', 'assets/sprites/land_mob/land_mob.png', 'assets/sprites/land_mob/land_mob.json');
   g.load.atlasJSONHash('flying-mob-1', 'assets/sprites/flying_mob/flying_mob.png', 'assets/sprites/flying_mob/flying_mob.json');
   g.load.atlasJSONHash('flying-mob-2', 'assets/sprites/flying_mob_2/flying_mob_2.png', 'assets/sprites/flying_mob_2/flying_mob_2.json');
@@ -33,19 +37,26 @@ function create() {
   globals.typoWordlist = g.cache.getText('typo-wordlist').split('\n');
 
   g.physics.startSystem(Phaser.Physics.ARCADE);
-
+  globals.wordCompletedSignal = new Phaser.Signal();
   globals.keypressSignal = new Phaser.Signal();
   g.input.keyboard.addCallbacks(this, null, null, handleKeypress);
 
   g.add.image(0, 0, 'background');
+
   globals.wizard = new Wizard({ game: g, x: 100, y: 400 });
+  globals.wizard_attacks = g.add.group();
   globals.mobs = g.add.group();
   spawnLandMob();
   spawnFlyingMob();
+
+  scoreText = g.add.text(20, 20, 'Score: ' + globals.score, { font: '20px Monospace', fill: '#fff' });
+  livesText = g.add.text(20, 50, 'Lives: ' + globals.lives, { font: '20px Monospace', fill: '#fff' });
 }
 
 function update() {
   g.physics.arcade.overlap(globals.wizard, globals.mobs, mobCollideHandler, null, this);
+  scoreText.text = 'Score: ' + globals.score;
+  livesText.text = 'Lives: ' + globals.lives;
 }
 
 function spawnLandMob() {
@@ -60,7 +71,7 @@ function spawnFlyingMob() {
 }
 
 function mobCollideHandler(wizard, mob) {
-  mob.destroy();
+  mob.kill();
   globals.lives -= 1;
 
   if (globals.lives === 0) {
