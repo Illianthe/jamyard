@@ -11,7 +11,7 @@ export default class extends Phaser.Sprite {
     this.word = globals.typoWordlist[game.rnd.integerInRange(0, globals.typoWordlist.length)];
     this.cur_char = 0;
     var text = this.text = game.add.text(0, -32, this.word, {
-      font: '20px Monospace',
+      font: '20px Source Code Pro',
       fill: '#FFF',
       backgroundColor: '#000'
     });

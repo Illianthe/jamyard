@@ -49,8 +49,8 @@ function create() {
   spawnLandMob();
   spawnFlyingMob();
 
-  scoreText = g.add.text(20, 20, 'Score: ' + globals.score, { font: '20px Monospace', fill: '#fff' });
-  livesText = g.add.text(20, 50, 'Lives: ' + globals.lives, { font: '20px Monospace', fill: '#fff' });
+  scoreText = g.add.text(20, 20, 'Score: ' + globals.score, { font: '20px Source Code Pro', fill: '#fff' });
+  livesText = g.add.text(20, 50, 'Lives: ' + globals.lives, { font: '20px Source Code Pro', fill: '#fff' });
 }
 
 function update() {

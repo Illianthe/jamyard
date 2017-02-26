@@ -6,6 +6,16 @@
   <title>Jamyard</title>
 
   <style>
+    @font-face {
+      font-family: "Source Code Pro";
+      src: url('assets/fonts/SourceCodePro-Regular.ttf') format("truetype");
+    }
+
+    .font-preload {
+      position:absolute;
+      left:-100px;
+    }
+
     html,
     body {
         margin: 0;
@@ -16,6 +26,7 @@
 
 <body>
   <div id="app"></div>
+  <div class="font-preload" style="font-family: Source Code Pro">.</div>
 </body>
 
 </html>
