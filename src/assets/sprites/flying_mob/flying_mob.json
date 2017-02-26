@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "frame-1.png",
+	"frame": {"x":1,"y":70,"w":48,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":28},
+	"sourceSize": {"w":48,"h":33}
+},
+{
+	"filename": "frame-2.png",
+	"frame": {"x":1,"y":100,"w":48,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":28},
+	"sourceSize": {"w":48,"h":33}
+},
+{
+	"filename": "frame-3.png",
+	"frame": {"x":1,"y":1,"w":48,"h":33},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":33},
+	"sourceSize": {"w":48,"h":33}
+},
+{
+	"filename": "frame-4.png",
+	"frame": {"x":1,"y":36,"w":48,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":32},
+	"sourceSize": {"w":48,"h":33}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "flying_mob.png",
+	"format": "RGBA8888",
+	"size": {"w":50,"h":129},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:79ca4d25f707251681b07dc74ad360d0:59f4ddf70e0857abb729c58c3fab5300:25a0e282675390bf9c9bc197e1e50fbf$"
+}
+}

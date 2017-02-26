@@ -4,5 +4,10 @@ export default {
 
   game: null,
   baseWordlist: [],
-  typoWordlist: []
+  typoWordlist: [],
+  keypressSignal: null,
+
+  lives: 3,
+  wizard: null,
+  mobs: null
 }

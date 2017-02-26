@@ -2,11 +2,12 @@ import Phaser from 'phaser-ce';
 import globals from '../globals';
 
 export default class extends Phaser.Sprite {
-  constructor({ game, x, y }) {
-    super(game, x, y, 'land-mob', 'idle/frame-1.png');
-    this.animations.add('idle', Phaser.Animation.generateFrameNames('idle/frame-', 1, 8, '.png', 0), 10, true, false);
+  constructor({ game, x, y, type }) {
+    super(game, x, y, 'flying-mob-' + type, 'frame-1.png');
+    this.animations.add('idle', Phaser.Animation.generateFrameNames('frame-', 1, 8, '.png', 0), 10, true, false);
     this.animations.play('idle');
     this.anchor.setTo(0.5);
+    this.scale.x = -1;
 
     this.word = globals.typoWordlist[game.rnd.integerInRange(0, globals.typoWordlist.length)];
     this.cur_char = 0;
@@ -16,6 +17,7 @@ export default class extends Phaser.Sprite {
       backgroundColor: '#000'
     });
     text.anchor.set(0.5);
+    text.scale.x = -1;
     this.addChild(text);
 
     game.physics.enable(this, Phaser.Physics.ARCADE);
@@ -25,9 +27,9 @@ export default class extends Phaser.Sprite {
 
   update() {
     if (globals.wizard.alive) {
-      this.game.physics.arcade.moveToObject(this, globals.wizard, 40);
+      this.game.physics.arcade.moveToObject(this, globals.wizard, 60);
     } else {
-      this.body.velocity.x = -40;
+      this.body.velocity.x = -60;
       this.body.velocity.y = 0;
     }
 
