@@ -61,13 +61,29 @@ function update() {
 
 function spawnLandMob() {
   globals.mobs.addAt(new LandMob({ game: g, x: 1000, y: g.rnd.integerInRange(400, 500) }), 0);
-  g.time.events.add(Phaser.Timer.SECOND + g.rnd.integerInRange(0, 9000), spawnLandMob, this);
+  g.time.events.add(getSpawnSpeed(), spawnLandMob, this);
 }
 
 function spawnFlyingMob() {
   var type = g.rnd.integerInRange(1, 4);
   globals.mobs.addAt(new FlyingMob({ game: g, type: type, x: 1000, y: g.rnd.integerInRange(0, 300) }), 0);
-  g.time.events.add(Phaser.Timer.SECOND + g.rnd.integerInRange(0, 9000), spawnFlyingMob, this);
+  g.time.events.add(getSpawnSpeed(), spawnFlyingMob, this);
+}
+
+function getSpawnSpeed() {
+  var spawnSpeed;
+  if (globals.score > 50) {
+    spawnSpeed = Phaser.Timer.SECOND + g.rnd.integerInRange(0, 1000);
+  } else if (globals.score > 25) {
+    spawnSpeed = Phaser.Timer.SECOND + g.rnd.integerInRange(0, 3000);
+  } else if (globals.score > 10) {
+    spawnSpeed = Phaser.Timer.SECOND + g.rnd.integerInRange(0, 5000);
+  } else if (globals.score > 5) {
+    spawnSpeed = Phaser.Timer.SECOND + g.rnd.integerInRange(0, 7000);
+  } else {
+    spawnSpeed = Phaser.Timer.SECOND + g.rnd.integerInRange(0, 9000);
+  }
+  return spawnSpeed;
 }
 
 function mobCollideHandler(wizard, mob) {
