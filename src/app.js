@@ -30,6 +30,8 @@ function preload() {
   g.load.atlasJSONHash('flying-mob-3', 'assets/sprites/flying_mob_3/flying_mob_3.png', 'assets/sprites/flying_mob_3/flying_mob_3.json');
   g.load.atlasJSONHash('flying-mob-4', 'assets/sprites/flying_mob_4/flying_mob_4.png', 'assets/sprites/flying_mob_4/flying_mob_4.json');
   g.load.atlasJSONHash('wizard', 'assets/sprites/wizard/wizard.png', 'assets/sprites/wizard/wizard.json');
+  g.load.audio('music-2', ['assets/audio/music_2.ogg']);
+  g.load.audio('hit', ['assets/audio/hit.wav']);
 }
 
 function create() {
@@ -51,6 +53,8 @@ function create() {
 
   scoreText = g.add.text(20, 20, 'Score: ' + globals.score, { font: '20px Source Code Pro', fill: '#fff' });
   livesText = g.add.text(20, 50, 'Lives: ' + globals.lives, { font: '20px Source Code Pro', fill: '#fff' });
+
+  var music = g.sound.play('music-2', 1, true);
 }
 
 function update() {
@@ -91,7 +95,7 @@ function mobCollideHandler(wizard, mob) {
   globals.lives -= 1;
 
   if (globals.lives === 0) {
-    wizard.kill();
+    wizard.die();
     console.log('Game over!');
   }
 }

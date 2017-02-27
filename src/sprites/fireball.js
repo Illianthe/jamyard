@@ -11,12 +11,17 @@ export default class extends Phaser.Sprite {
   }
 
   update() {
+    if (!this.target.alive) {
+      this.kill();
+    }
+    
     this.game.physics.arcade.moveToObject(this, this.target, 720);
     this.rotation = this.game.physics.arcade.angleBetweenCenters(this, this.target);
     this.game.physics.arcade.overlap(this, this.target, this.attackMobCollideHandler, null, this);
   }
 
   attackMobCollideHandler(attack, mob) {
+    this.game.sound.play('hit', 0.5);
     globals.score += 1;
     attack.kill();
     mob.kill();
