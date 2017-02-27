@@ -49,13 +49,13 @@ export default class extends Phaser.State {
   }
 
   spawnLandMob() {
-    globals.mobs.addAt(new LandMob({ game: this.game, x: 1000, y: this.game.rnd.integerInRange(400, 500) }), 0);
+    globals.mobs.addAt(new LandMob({ game: this.game, cardAttrs: this.getTextCardAttrs(), x: 1000, y: this.game.rnd.integerInRange(400, 500) }), 0);
     this.game.time.events.add(this.getSpawnSpeed(), this.spawnLandMob, this);
   }
 
   spawnFlyingMob() {
     var type = this.game.rnd.integerInRange(1, 4);
-    globals.mobs.addAt(new FlyingMob({ game: this.game, type: type, x: 1000, y: this.game.rnd.integerInRange(0, 350) }), 0);
+    globals.mobs.addAt(new FlyingMob({ game: this.game, cardAttrs: this.getTextCardAttrs(), type: type, x: 1000, y: this.game.rnd.integerInRange(0, 350) }), 0);
     this.game.time.events.add(this.getSpawnSpeed(), this.spawnFlyingMob, this);
   }
 
@@ -63,9 +63,9 @@ export default class extends Phaser.State {
     var spawnSpeed;
     if (globals.score > 100) {
       spawnSpeed = Phaser.Timer.SECOND + this.game.rnd.integerInRange(0, 1000);
-    } else if (globals.score > 25) {
+    } else if (globals.score > 50) {
       spawnSpeed = Phaser.Timer.SECOND + this.game.rnd.integerInRange(0, 3000);
-    } else if (globals.score > 10) {
+    } else if (globals.score > 20) {
       spawnSpeed = Phaser.Timer.SECOND + this.game.rnd.integerInRange(0, 5000);
     } else if (globals.score > 5) {
       spawnSpeed = Phaser.Timer.SECOND + this.game.rnd.integerInRange(0, 7000);
@@ -73,6 +73,28 @@ export default class extends Phaser.State {
       spawnSpeed = Phaser.Timer.SECOND + this.game.rnd.integerInRange(0, 9000);
     }
     return spawnSpeed;
+  }
+
+  getTextCardAttrs() {
+    var n = this.game.rnd.integerInRange(0, 3);
+    var attrs = {};
+
+    switch (n) {
+    case 0:
+      attrs = { tile: 'blue-tile', color: '#55A1E7' }
+      break;
+    case 1:
+      attrs = { tile: 'purple-tile', color: '#8282CE' }
+      break;
+    case 2:
+      attrs = { tile: 'red-tile', color: '#F58263' }
+      break;
+    case 3:
+      attrs = { tile: 'turquoise-tile', color: '#4ADCC0' }
+      break;
+    }
+
+    return attrs;
   }
 
   mobCollideHandler(wizard, mob) {

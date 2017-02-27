@@ -2,8 +2,9 @@ import Phaser from 'phaser-ce';
 import globals from '../globals';
 
 export default class extends Phaser.Sprite {
-  constructor({ game, x, y, type }) {
+  constructor({ game, x, y, type, cardAttrs }) {
     super(game, x, y, 'flying-mob-' + type, 'frame-1.png');
+    this.cardAttrs = cardAttrs;
     this.animations.add('idle', Phaser.Animation.generateFrameNames('frame-', 1, 8, '.png', 0), 10, true, false);
     this.animations.play('idle');
     this.anchor.setTo(0.5);
@@ -11,14 +12,20 @@ export default class extends Phaser.Sprite {
 
     this.word = globals.typoWordlist[game.rnd.integerInRange(0, globals.typoWordlist.length)];
     this.cur_char = 0;
+    var textGroup = new Phaser.Group(this.game, this);
     var text = this.text = game.add.text(0, -32, this.word, {
       font: '20px Source Code Pro',
-      fill: '#FFF',
-      backgroundColor: '#000'
+      fill: '#FFF'
     });
     text.anchor.set(0.5);
     text.scale.x = -1;
-    this.addChild(text);
+    var border = game.add.tileSprite(0, -36, Math.abs(text.width) + 20, Math.abs(text.height) + 10, cardAttrs.tile);
+    border.anchor.set(0.5);
+    var bg = game.add.tileSprite(0, -36, Math.abs(text.width) + 18, Math.abs(text.height) + 8, 'black-tile');
+    bg.anchor.set(0.5);
+    textGroup.add(border);
+    textGroup.add(bg);
+    textGroup.add(text);
 
     game.physics.enable(this, Phaser.Physics.ARCADE);
     globals.keypressSignal.add(this.handleKeypress, this);
@@ -42,7 +49,7 @@ export default class extends Phaser.Sprite {
     if (this.word[this.cur_char] === char) {
       this.cur_char += 1;
       this.text.clearColors();
-      this.text.addColor('#4ADCC0', 0);
+      this.text.addColor(this.cardAttrs.color, 0);
       this.text.addColor('#FFF', this.cur_char);
     }
 
