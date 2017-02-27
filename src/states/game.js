@@ -6,6 +6,7 @@ import Wizard from '../sprites/wizard';
 
 export default class extends Phaser.State {
   init() {
+    this.game.sound.removeByKey('music-2');
     globals.lives = 3;
     globals.score = 0;
   }
@@ -60,7 +61,7 @@ export default class extends Phaser.State {
 
   getSpawnSpeed() {
     var spawnSpeed;
-    if (globals.score > 50) {
+    if (globals.score > 100) {
       spawnSpeed = Phaser.Timer.SECOND + this.game.rnd.integerInRange(0, 1000);
     } else if (globals.score > 25) {
       spawnSpeed = Phaser.Timer.SECOND + this.game.rnd.integerInRange(0, 3000);
@@ -82,7 +83,6 @@ export default class extends Phaser.State {
 
     if (globals.lives === 0) {
       wizard.die();
-      console.log('Game over!');
     }
   }
 }

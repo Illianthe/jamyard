@@ -12,6 +12,7 @@ export default class extends Phaser.State {
     this.load.text('typo-wordlist', 'assets/data/typo_wordlist.txt');
     this.load.image('background', 'assets/background.png');
     this.load.image('fireball', 'assets/fireball.png');
+    this.load.image('title', 'assets/title.png');
     this.load.atlasJSONHash('land-mob', 'assets/sprites/land_mob/land_mob.png', 'assets/sprites/land_mob/land_mob.json');
     this.load.atlasJSONHash('flying-mob-1', 'assets/sprites/flying_mob/flying_mob.png', 'assets/sprites/flying_mob/flying_mob.json');
     this.load.atlasJSONHash('flying-mob-2', 'assets/sprites/flying_mob_2/flying_mob_2.png', 'assets/sprites/flying_mob_2/flying_mob_2.json');
@@ -24,6 +25,11 @@ export default class extends Phaser.State {
   }
 
   create() {
+    this.game.add.image(0, 0, 'background');
+
+    var title = this.game.add.image(500, 100, 'title');
+    title.anchor.set(0.5);
+
     var startText = this.game.add.text(500, 400, 'Press any key to start!', { font: '32px Source Code Pro', fill: '#FFF' });
     startText.anchor.set(0.5);
     this.game.input.keyboard.addCallbacks(this, null, null, this.handleKeypress);
