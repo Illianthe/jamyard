@@ -19,7 +19,6 @@ export default class extends Phaser.State {
     this.load.atlasJSONHash('flying-mob-3', 'assets/sprites/flying_mob_3/flying_mob_3.png', 'assets/sprites/flying_mob_3/flying_mob_3.json');
     this.load.atlasJSONHash('flying-mob-4', 'assets/sprites/flying_mob_4/flying_mob_4.png', 'assets/sprites/flying_mob_4/flying_mob_4.json');
     this.load.atlasJSONHash('wizard', 'assets/sprites/wizard/wizard.png', 'assets/sprites/wizard/wizard.json');
-    this.load.audio('music', ['assets/audio/music.ogg']);
     this.load.audio('music-2', ['assets/audio/music_2.ogg']);
     this.load.audio('hit', ['assets/audio/hit.wav']);
   }

@@ -8,7 +8,7 @@ export default {
   keypressSignal: null,
   wordCompletedSignal: null,
 
-  lives: 3,
+  health: 100,
   score: 0,
   wizard: null,
   wizard_attacks: null,

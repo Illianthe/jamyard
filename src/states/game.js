@@ -7,7 +7,7 @@ import Wizard from '../sprites/wizard';
 export default class extends Phaser.State {
   init() {
     this.game.sound.removeByKey('music-2');
-    globals.lives = 3;
+    globals.health = 100;
     globals.score = 0;
   }
 
@@ -29,7 +29,7 @@ export default class extends Phaser.State {
     this.spawnFlyingMob();
 
     this.scoreText = this.game.add.text(20, 20, 'Score: ' + globals.score, { font: '20px Source Code Pro', fill: '#fff' });
-    this.livesText = this.game.add.text(20, 50, 'Lives: ' + globals.lives, { font: '20px Source Code Pro', fill: '#fff' });
+    this.healthText = this.game.add.text(20, 50, 'Health: ' + globals.health, { font: '20px Source Code Pro', fill: '#fff' });
 
     this.game.sound.play('music-2', 1, true);
   }
@@ -37,7 +37,7 @@ export default class extends Phaser.State {
   update() {
     this.game.physics.arcade.overlap(globals.wizard, globals.mobs, this.mobCollideHandler, null, this);
     this.scoreText.text = 'Score: ' + globals.score;
-    this.livesText.text = 'Lives: ' + globals.lives;
+    this.healthText.text = 'Health: ' + globals.health;
 
     if (!globals.wizard.alive) {
       this.state.start('End');
@@ -55,7 +55,7 @@ export default class extends Phaser.State {
 
   spawnFlyingMob() {
     var type = this.game.rnd.integerInRange(1, 4);
-    globals.mobs.addAt(new FlyingMob({ game: this.game, type: type, x: 1000, y: this.game.rnd.integerInRange(0, 300) }), 0);
+    globals.mobs.addAt(new FlyingMob({ game: this.game, type: type, x: 1000, y: this.game.rnd.integerInRange(0, 350) }), 0);
     this.game.time.events.add(this.getSpawnSpeed(), this.spawnFlyingMob, this);
   }
 
@@ -77,11 +77,11 @@ export default class extends Phaser.State {
 
   mobCollideHandler(wizard, mob) {
     mob.kill();
-    if (globals.lives > 0) {
-      globals.lives -= 1;
+    if (globals.health > 0) {
+      globals.health -= 20;
     }
 
-    if (globals.lives === 0) {
+    if (globals.health === 0) {
       wizard.die();
     }
   }
