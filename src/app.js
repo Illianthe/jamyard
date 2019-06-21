@@ -1,5 +1,5 @@
-import 'expose-loader?PIXI!phaser-ce/build/pixi';
-import 'expose-loader?p2!phaser-ce/build/p2';
+import 'expose-loader?PIXI!phaser-ce/build/custom/pixi';
+import 'expose-loader?p2!phaser-ce/build/custom/p2';
 import 'expose-loader?Phaser!phaser-ce';
 import globals from './globals';
 import BootState from './states/boot';
